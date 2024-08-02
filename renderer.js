@@ -7,9 +7,9 @@ function agregarCliente() {
     }
 
     // crea un nuevo cliente
-    const cliente = document.createElement('div');
-    cliente.className = 'cliente';
-    cliente.textContent = `Cliente: ${nombreCliente}`;
+    const cliente = document.createElement('button');
+    cliente.className = 'containerCliente';
+    cliente.textContent = `${nombreCliente}`;
 
     // obtiene los nombres de los productos y sus precios
     const productos = [];
@@ -23,7 +23,7 @@ function agregarCliente() {
 
     // crea la lista de productos y sus precios
     const listaProductos = document.createElement('div');
-    listaProductos.className = 'lista-productos';
+    listaProductos.className = 'listaProductos';
 
     productos.forEach(producto => {
         const productoDiv = document.createElement('div');
@@ -35,7 +35,7 @@ function agregarCliente() {
     // agrega el nuevo cliente y su lista de productos a la lista
     const listaClientes = document.getElementById('lista');
     listaClientes.appendChild(cliente);
-    listaClientes.appendChild(listaProductos);
+    //listaClientes.appendChild(listaProductos);                            // no quiero que se vea el producto o precio en la lista de clientes
 
     // limpia los inputs
     document.getElementById('nombre').value = '';
