@@ -53,27 +53,57 @@ body {
 }
 
 .containerCliente {
-    background-color: #007bff; /* Fondo azul */
-    color: white; /* Texto blanco */
-    border: none; /* Sin bordes */
-    padding: 10px 20px; /* Espaciado interno */
-    text-align: center; /* Alineación del texto */
-    text-decoration: none; /* Sin subrayado */
-    display: inline-block; /* Para que el padding funcione */
-    font-size: 16px; /* Tamaño de fuente */
-    margin: 4px 2px; /* Margen */
-    cursor: pointer; /* Cursor de puntero al pasar sobre el botón */
-    border-radius: 4px; /* Bordes redondeados */
+    background-color: #888888;
     transition: background-color 0.3s ease; /* Efecto de transición para el fondo */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 90%;
 }
 
 .containerCliente:hover {
+    background-color: #5d5d5d;
+}
+
+.nombreCliente {
+    flex-grow: 1;
+    margin-right: 60px; /* Espacio entre el nombre y los botones */
+}
+
+.containerBotones {
+    display: flex;
+    gap: 5px;
+}
+
+.btnEliminar, .btnVerDetalles {
+    color: white; /* Texto blanco */
+    border: none; /* Sin bordes */
+    padding: 5px 10px; /* Espaciado interno */
+    border-radius: 4px; /* Bordes redondeados */
+    cursor: pointer; /* Cursor de puntero al pasar sobre el botón */
+    transition: background-color 0.3s ease; /* Efecto de transición para el fondo */
+}
+
+.btnEliminar {
+    background-color: #ff4d4d; /* Fondo rojo */
+}
+
+.btnEliminar:hover {
+    background-color: #ad2b2b; /* Fondo más oscuro al pasar sobre el botón */
+}
+
+.btnVerDetalles {
+    background-color: #007bff; /* Fondo azul */
+}
+
+.btnVerDetalles:hover {
     background-color: #0056b3; /* Fondo más oscuro al pasar sobre el botón */
 }
 
-.containerCliente:focus {
-    outline: none; /* Quitar borde de enfoque */
-    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5); /* Añadir sombra al enfocarse */
-}
+
 
 

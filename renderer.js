@@ -7,9 +7,42 @@ function agregarCliente() {
     }
 
     // crea un nuevo cliente
-    const cliente = document.createElement('button');
+    const cliente = document.createElement('div');
     cliente.className = 'containerCliente';
     cliente.textContent = `${nombreCliente}`;
+
+    // crea un span para el nombre del cliente
+    const nombreSpan = document.createElement('span');
+    nombreSpan.className = 'nombreCliente';
+    nombreSpan.textContent = `${nombreCliente}`;
+    
+    // crea un contenedor para los botones
+    const botonesContainer = document.createElement('div');
+    botonesContainer.className = 'containerBotones';
+
+    // crea un botón para eliminar el cliente
+    const botonEliminar = document.createElement('button');
+    botonEliminar.className = 'btnEliminar';
+    botonEliminar.textContent = 'Eliminar';
+    botonEliminar.onclick = () => {
+        cliente.remove();
+        listaProductos.remove();
+    };
+
+    // crea un botón para ver detalles del cliente
+    const botonVerDetalles = document.createElement('button');
+    botonVerDetalles.className = 'btnVerDetalles';
+    botonVerDetalles.textContent = 'Ver Detalles';
+    botonVerDetalles.onclick = () => {
+        alert(`Cliente: ${nombreCliente}\nProductos: ${productos.map(p => `${p.nombre} - Precio: ${p.precio}`).join('\n')}`);
+    };
+
+    // añade los botones al contenedor de botones
+    botonesContainer.appendChild(botonEliminar);
+    botonesContainer.appendChild(botonVerDetalles);
+
+    // añade el contenedor de botones al div del cliente
+    cliente.appendChild(botonesContainer);
 
     // obtiene los nombres de los productos y sus precios
     const productos = [];
