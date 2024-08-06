@@ -83,6 +83,20 @@ function mostrarDetallesCliente(nombreCliente, productos) {
     tituloDetalle.innerHTML = `<h1> ${nombreCliente} </h1>`
     const detalleContenido = document.getElementById('detalleContenido');
     detalleContenido.innerHTML = `${productos.map(p => `<ul><li>${p.nombre} - <mark>$${p.precio}</mark></li>`).join('')}</ul>`;
+
+    const items = detalleContenido.getElementsByTagName('li');
+    for (let item of items) {
+        item.onclick = function() {
+            if (this.style.backgroundColor === 'rgba(0, 0, 0, 0.1)') {
+                this.style.backgroundColor = '';
+                this.style.textDecoration = '';
+            } else {
+                this.style.backgroundColor = 'rgba(0, 0, 0, 0.1)';
+                this.style.textDecoration = 'line-through';
+            }
+        };
+    }
+
     const detalleCliente = document.getElementById('detalleCliente');
     detalleCliente.style.display = 'block';
 }
