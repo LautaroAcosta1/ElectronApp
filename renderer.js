@@ -34,7 +34,7 @@ function agregarCliente() {
     botonVerDetalles.className = 'btnVerDetalles';
     botonVerDetalles.textContent = 'Ver Detalles';
     botonVerDetalles.onclick = () => {
-        alert(`Cliente: ${nombreCliente}\nProductos: ${productos.map(p => `${p.nombre} - Precio: ${p.precio}`).join('\n')}`);
+        mostrarDetallesCliente(nombreCliente, productos);
     };
 
     // añade los botones al contenedor de botones
@@ -68,7 +68,6 @@ function agregarCliente() {
     // agrega el nuevo cliente y su lista de productos a la lista
     const listaClientes = document.getElementById('lista');
     listaClientes.appendChild(cliente);
-    //listaClientes.appendChild(listaProductos);                            // no quiero que se vea el producto o precio en la lista de clientes
 
     // limpia los inputs
     document.getElementById('nombre').value = '';
@@ -76,4 +75,20 @@ function agregarCliente() {
         document.getElementById(`producto${i}`).value = '';
         document.getElementById(`precio${i}`).value = '';
     }
+}
+
+
+function mostrarDetallesCliente(nombreCliente, productos) {
+    const tituloDetalle = document.getElementById('tituloDetalle');
+    tituloDetalle.innerHTML = `<h1> ${nombreCliente} </h1>`
+    const detalleContenido = document.getElementById('detalleContenido');
+    detalleContenido.innerHTML = `${productos.map(p => `<ul><li>${p.nombre} - <mark>$${p.precio}</mark></li>`).join('')}</ul>`;
+    const detalleCliente = document.getElementById('detalleCliente');
+    detalleCliente.style.display = 'block';
+}
+
+
+function cerrarPestania() {
+    const detalleCliente = document.getElementById('detalleCliente');
+    detalleCliente.style.display = 'none';
 }

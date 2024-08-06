@@ -46,6 +46,7 @@ body {
     width: 36%;
     background-color: aquamarine;
     height: 392px;
+    overflow: auto; /* Habilitar scroll si es necesario */
 }
 
 .tituloLista {
@@ -54,7 +55,7 @@ body {
 
 .containerCliente {
     background-color: #888888;
-    transition: background-color 0.3s ease; /* Efecto de transición para el fondo */
+    transition: background-color 0.3s ease;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -71,7 +72,7 @@ body {
 
 .nombreCliente {
     flex-grow: 1;
-    margin-right: 60px; /* Espacio entre el nombre y los botones */
+    margin-right: 60px;
 }
 
 .containerBotones {
@@ -80,28 +81,112 @@ body {
 }
 
 .btnEliminar, .btnVerDetalles {
-    color: white; /* Texto blanco */
-    border: none; /* Sin bordes */
-    padding: 5px 10px; /* Espaciado interno */
-    border-radius: 4px; /* Bordes redondeados */
-    cursor: pointer; /* Cursor de puntero al pasar sobre el botón */
-    transition: background-color 0.3s ease; /* Efecto de transición para el fondo */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 .btnEliminar {
-    background-color: #ff4d4d; /* Fondo rojo */
+    background-color: #ff4d4d;
 }
 
 .btnEliminar:hover {
-    background-color: #ad2b2b; /* Fondo más oscuro al pasar sobre el botón */
+    background-color: #ad2b2b;
 }
 
 .btnVerDetalles {
-    background-color: #007bff; /* Fondo azul */
+    background-color: #007bff;
 }
 
 .btnVerDetalles:hover {
-    background-color: #0056b3; /* Fondo más oscuro al pasar sobre el botón */
+    background-color: #0056b3;
+}
+
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~ DETALLES DE CLIENTE ~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+.pestania {
+    display: none; /* Oculto por defecto */
+    position: fixed; /* Posición fija */
+    z-index: 1; /* Colocar delante de otros elementos */
+    left: 0;
+    top: 0;
+    margin-left: 36rem;
+    height: 100%;
+    width: 100%;
+}
+
+.btnCerrar {
+    color: #aaa;
+    margin-left: 41rem;
+    font-size: 34px;
+    font-weight: bold;
+}
+
+.btnCerrar:hover,
+.btnCerrar:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.containerDetalles {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    margin-top: 2rem;
+    padding-top: 4px;
+    border: 1px solid #888;
+    height: 38rem;
+    max-width: 44rem;
+    border-radius: 10px;
+}
+
+#tituloDetalle {
+    font-size: 18px;
+}
+
+#detalleContenido {
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+#detalleContenido mark {
+    font-weight: 600;
+    background-color: #ffeb3b;
+    color: #000;
+    padding: 0 5px;
+    border-radius: 3px;
+}
+
+#detalleContenido ul {
+    list-style-type: none;
+    margin-top: 20px;
+}
+
+ul li {
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+ul li:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+ul li::before {
+    content: '•';
+    color: #0dff00; /* Color del punto */
+    font-size: 20px;
+    padding-right: 10px;
 }
 
 
