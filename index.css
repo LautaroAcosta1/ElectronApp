@@ -189,6 +189,12 @@ ul li::before {
     padding-right: 10px;
 }
 
+.total {
+    margin-top: 20px;
+    font-size: 18px;
+    text-align: center;
+}
+
 
 
 

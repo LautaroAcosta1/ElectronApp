@@ -50,7 +50,7 @@ function agregarCliente() {
         const nombreProducto = document.getElementById(`producto${i}`).value;
         const precioProducto = document.getElementById(`precio${i}`).value;
         if (nombreProducto.trim() !== '' && precioProducto.trim() !== '') {
-            productos.push({ nombre: nombreProducto, precio: precioProducto });
+            productos.push({ nombre: nombreProducto, precio: parseFloat(precioProducto) });
         }
     }
 
@@ -82,18 +82,29 @@ function mostrarDetallesCliente(nombreCliente, productos) {
     const tituloDetalle = document.getElementById('tituloDetalle');
     tituloDetalle.innerHTML = `<h1> ${nombreCliente} </h1>`
     const detalleContenido = document.getElementById('detalleContenido');
-    detalleContenido.innerHTML = `${productos.map(p => `<ul><li>${p.nombre} - <mark>$${p.precio}</mark></li>`).join('')}</ul>`;
+    detalleContenido.innerHTML = `${productos.map(p => `<ul><li>${p.nombre} - <mark>$${p.precio.toFixed(2)}</mark></li>`).join('')}</ul>`;
 
     const items = detalleContenido.getElementsByTagName('li');
-    for (let item of items) {
-        item.onclick = function() {
+    let precioTotal = productos.reduce((total, p) => total += p.precio, 0);
+
+    const totalDiv = document.createElement('div');
+    totalDiv.className = 'total';
+    totalDiv.innerHTML = `<strong>Total: $${precioTotal.toFixed(2)}</strong>`;
+    detalleContenido.appendChild(totalDiv);
+
+    for (let i = 0; i < items.length; i++) {
+        items[i].onclick = function() {
+            const producto = productos[i];
             if (this.style.backgroundColor === 'rgba(0, 0, 0, 0.1)') {
                 this.style.backgroundColor = '';
                 this.style.textDecoration = '';
+                precioTotal += producto.precio;
             } else {
                 this.style.backgroundColor = 'rgba(0, 0, 0, 0.1)';
                 this.style.textDecoration = 'line-through';
+                precioTotal -= producto.precio;
             }
+            totalDiv.innerHTML = `<strong>Total: $${precioTotal.toFixed(2)}</strong>`;
         };
     }
 
